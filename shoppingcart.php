@@ -1,8 +1,5 @@
 <?php 
 session_start();
-if (!isset($_SESSION['cart'])){
-        $_SESSION['cart'][$pID] = array('qty' => $qty, 'price' => $price, 'name' => $productname, 'unitquan' => $unitquan);
-}
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +22,8 @@ table, td, th {
     
 <?php
 
+
+//if quantity is 0 do not set any of the values below. Avoids initial creation of an array with a blank key
 if ( ($_POST['qty'] != 0)){
 //load up variables from getproduct form  
 $pID = $_POST['pID'];  
@@ -36,25 +35,25 @@ $unitquan = $_POST['unitquan'];
 $price = $unitprice * $qty;
 }
 
-//filter null values from array so it doesn't fill up on page load
-foreach(($_SESSION['cart'])as $key =>$value )
-{
-    if(empty($key) or empty($value)){
-        unset(($_SESSION['cart'])[$key]);
-    }
+//create session if doesn't already exist
+if(!empty($pID)) {
+if (!isset($_SESSION['cart'])){
+        $_SESSION['cart'][$pID] = array('qty' => $qty, 'price' => $price, 'name' => $productname, 'unitquan' => $unitquan);
+}
 }
 
-
-//get total value of all items in cart
-
-/*foreach($_SESSION['cart'] as $k => $v){
-    $total = array_sum(array_column($k,'price'));
-    echo "<p>". $total . "</p>";
-} */
-
-    
-echo "<p>". $total . "</p>";
-
+//set array
+$cartprices = array();
+//get each array from cart
+        foreach($_SESSION['cart'] as $name => $array){ 
+//get each price from array
+              $arrayprice =  $array['price'];
+//push price into an array
+            //array_push($cartprices, $arrayprice);
+            $cartprices[] = $arrayprice;
+        }
+//summ all parts of array as $total
+    $total = array_sum($cartprices);
 
 
     //does product exist in cart already?
@@ -70,16 +69,13 @@ echo "<p>". $total . "</p>";
         } 
 
 
+
+
  if (isset($_SESSION['cart'])) {
-     
-                foreach($_SESSION['cart'] as $name => $array){ 
-                    if(empty($array['name'])){
-                        echo "<div class='grid-content'>No products in cart.</div>";
-                        exit();
-                    } else {
-  
+
  ?>
  
+ <!-- create table headers on page if cart has items -->
  <table class='text'>
  <tr>
  <th>Product Name</th>
@@ -88,10 +84,12 @@ echo "<p>". $total . "</p>";
  <th>Price</th>
  </tr>
  
- <?php
+<?php
                     
-                if(is_array($_SESSION['cart'])) {
+                //iterates through each cart item and displays in table
                 foreach($_SESSION['cart'] as $name => $array){ 
+                    if($array['qty'] == 0){
+                    } else {
                 ?>
                     <tr>
                         <td><?php echo $array['name']; ?></td>
@@ -100,33 +98,31 @@ echo "<p>". $total . "</p>";
                         <td>$<?php echo $array['price']; ?></td>
                     </tr>
                     
-                    <?php
+<?php               
                 }
-            } 
-        }           
-    } 
-        
+            }
+
 ?>
  
   </table>
-  
+
   <br>
-  <div class='rightalign'><h>Cart total: $<?php ?></h></h></div>
+  <!-- display total value in cart -->
+  <div class='rightalign'><h>Cart total: $<?php print_r($total) ?></h></h></div>
+  
+  
   
   <br><br>
   <div>
+    <!-- show buttons to clear cart or checkout -->
   <form action='clearcart.php' method='post' target='cartview' ><input type='submit' class='madbutton' value='Clear Cart'></form>
   <form action='checkout.php' method='post' target='productandcheckoutview'><input type='submit' class='happybutton' value='Checkout'></form>
   </div>
 <?php        
-        
+   
  } else {
   echo "<div class='grid-content'>No products in cart.</div>";
  }
-
-echo "<pre>";
-print_r($_SESSION['cart']);
-echo "</pre>";
 
 
 

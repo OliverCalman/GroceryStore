@@ -1,0 +1,101 @@
+      body {
+      background-color: white;
+      }
+      h1 {
+      color: black;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      }
+      h2 {
+      color: black;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      }
+      img {
+          height: auto;
+          max-width: 100%;
+      }
+      h {
+      color: black;
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
+      }
+      .img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      }
+      .text {
+      color: black;
+      font-family: Arial, Helvetica, sans-serif;
+      }
+      .grid-container {
+         display: grid;
+         grid-template-columns: 50% 50%;
+         grid-template-rows: 400px 400px 400px;
+         padding: 10px;
+      }
+       .grid-picturemap {
+         grid-row-start: 1;
+         grid-row-end: 3;
+         background-color: aqua;
+         border: 1px solid #000000;
+         padding-left: 2%;
+         padding-right: 2%;
+         padding-top: 2%
+       }
+       .grid-itemview {
+         border: 1px solid #000000;
+         padding-left: 2%;
+         padding-right: 2%;
+         padding-top: 2%
+       }
+       .grid-shoppingcart {
+         border: 1px solid #000000;
+         padding-left: 2%;
+         padding-right: 2%;
+         padding-top: 2%;
+       }
+       .grid-content {
+         text-align: center;
+         position:relative;
+         top: 40px;
+       }
+       .topright {
+         position: absolute;
+         top: 5px;
+         right: 25px;
+         height: 60px;
+         width: 60px;
+       }
+       .frame {
+         height: 300px;
+         width: 90%;
+         border-style: none;
+         position: relative;
+       }
+       .madbutton {
+        background-color: #f44336;
+        float: left;
+        margin-right: 40px;
+        padding: 10px 24px;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        font-size: 12px;
+       }
+       .happybutton {
+        background-color: #008CBA;
+        margin-right: 40px;
+        padding: 10px 24px;
+        border: none;
+        color: white;
+        text-align: center;
+        font-size: 12px;
+       }
+       .rightalign {
+        position: relative;
+        text-align: right;
+        right: 50%;
+       }

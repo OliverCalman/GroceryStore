@@ -9,6 +9,11 @@ session_start();
 <body>
     
 <p class=grid-content>Your purchase was successful.</p>
+<form action='clearcart.php' id='clearcart' method='post' target='cartview' ></form>
+
+<script>
+  document.getElementById('clearcart').submit();
+</script>
 
 </body>
 </html> 

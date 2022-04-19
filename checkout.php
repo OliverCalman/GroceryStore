@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 
 <html>
@@ -19,41 +20,40 @@ session_start();
 </tr>
 
 <tr>
-<td>Name</td>
+<td class="text">Name</td>
 <td><input type="text" id="name" name="name" required></td>
 </tr>
 
 <tr>
-<td>Address</td>
+<td class="text">Address</td>
 <td><input type="text" id="address" name="address" required></td>
 </tr>
 
 <tr>
-<td>Suburb</td>
+<td class="text">Suburb</td>
 <td><input type="text" id="suburb" name="suburb" required></td>
 </tr>
 
 <tr>
-<td>State</td>
+<td class="text">State</td>
 <td><input type="text" id="state" name="state" required></td>
 </tr>
 
 <tr>
-<td>Country</td>
+<td class="text">Country</td>
 <td><input type="text" id="country" name="country" required></td>
 </tr>
 
 <tr>
-<td>Email</td>
+<td class="text">Email</td>
 <td><input type="email" id="email" name="email" required></td>
 </tr>
 
 </table> 
 
-<div class=grid-content><input type='submit' class=happybutton  value='Purchase'></div>
+<div class=grid-content><input type='submit' class=happybutton value='Purchase'></div>
   
 </form> 
 
 </body>
 </html> 
-
